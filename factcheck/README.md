@@ -1,4 +1,4 @@
-# Source-Based Fact-Checker
+# Source Based Fact Checker
 
 **An agentic, multi-source fact-checking pipeline built with the Model Context Protocol (MCP), LangGraph orchestration, Google Gemini and a local NLI model. It runs entirely on free tools.**
 
@@ -8,7 +8,7 @@ Enter a statement. The system plans a search strategy, queries many free sources
 
 ---
 
-## What it does, in plain words
+## What it does?
 
 Anyone can search the web and get links, but you still have to open each page, read it and decide who to believe. This project automates that reading-and-judging step:
 
@@ -43,7 +43,7 @@ flowchart TD
     E --> UI
 ```
 
-The pipeline is the **only MCP client**. The two MCP servers never communicate with each other: the pipeline carries the retrieved sources from the Search server to the Verification server. MCP is used only between the pipeline and the servers. The Search server reaches external data sources with ordinary HTTP requests, and Gemini is called directly over its API.
+The two MCP servers never communicate with each other: the pipeline carries the retrieved sources from the Search server to the Verification server. MCP is used only between the pipeline and the servers. The Search server reaches external data sources with ordinary HTTP requests, and Gemini is called directly over its API.
 
 ### Components
 
@@ -140,7 +140,7 @@ The first verification run downloads the NLI model (about 700 MB). For a lighter
 | Variable | Purpose | Required |
 |---|---|---|
 | `GEMINI_API_KEY` | Gemini API key (free tier) | Yes |
-| `PRIMARY_MODEL`, `FALLBACK_MODELS` | Gemini model names (check Google AI Studio for current names) | No |
+| `PRIMARY_MODEL`, `FALLBACK_MODELS` | Gemini model names (gemini-3.8-flash(primary model) and gemini-3.1-flash-lite(fallback model)) | No |
 | `GROQ_API_KEY` | Adds Groq as a last-resort fallback LLM | No |
 | `GOOGLE_FACTCHECK_API_KEY` | Free key for the Google Fact Check Tools API | No |
 | `CONTACT_EMAIL` | Polite-use identification for OpenAlex / PubMed | No |
@@ -162,7 +162,7 @@ Never commit API keys. They are read from environment variables, and `.env` is g
 
 ---
 
-## Limitations
+## Limitations of this project
 
 - **Sources, not truth.** A verdict reflects retrieved sources. A widely repeated error can mislead the system.
 - **NLI weaknesses.** NLI models are weaker on numbers, negation and long multi-clause sentences. The figure-matching heuristic helps but can misfire when two different things share a topic.
@@ -171,7 +171,7 @@ Never commit API keys. They are read from environment variables, and `.env` is g
 - **Language.** Tuned for English statements and sources.
 - **No MCP authentication.** Servers run locally over stdio and are not designed for public deployment as-is.
 
-## Roadmap
+## Future tasks
 
 - Clarification step that asks for missing context (location, date) before searching
 - Article scanner: extract and verify every checkable statement in a pasted text
