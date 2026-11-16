@@ -145,7 +145,6 @@ The first verification run downloads the NLI model (about 700 MB). For a lighter
 | `MAX_PARTS` | Max parts a statement is split into (default 6) | No |
 | `NLI_MODEL` | Local NLI model | No |
 
-Never commit API keys. They are read from environment variables, and `.env` is git-ignored.
 
 ---
 
