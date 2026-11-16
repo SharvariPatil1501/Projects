@@ -1,0 +1,12 @@
+mcp>=1.2,<2
+langgraph
+google-genai
+httpx
+ddgs
+trafilatura
+sentence-transformers
+torch
+numpy
+streamlit
+# optional fallback LLM (used only if GROQ_API_KEY is set)
+groq
